@@ -1,0 +1,17 @@
+*.tsv
+*.gz
+.metals
+.vscode
+*.minimal
+.DS_Store
+.ammonite/
+logs
+target
+/.bsp
+/.idea
+/.idea_modules
+/.classpath
+/.project
+/.settings
+/RUNNING_PID
+
