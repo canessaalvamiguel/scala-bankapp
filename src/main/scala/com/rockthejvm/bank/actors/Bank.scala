@@ -10,6 +10,7 @@ import com.rockthejvm.bank.actors.PersistentBankAccount.Response.BankAccountCrea
 
 import java.util.UUID
 import scala.concurrent.ExecutionContext
+import scala.util.Failure
 
 object Bank {
 
@@ -39,7 +40,7 @@ object Bank {
           case Some(account) =>
             Effect.reply(account)(updateCommand)
           case None =>
-            Effect.reply(replyTo)(BankAccountBalanceUpdatedResponse(None)) // failed account search
+            Effect.reply(replyTo)(BankAccountBalanceUpdatedResponse(Failure(new RuntimeException("Bank account cannot be found")))) // failed account search
         }
       case getCommand @ GetBankAccount(id, replyTo) =>
         state.accounts.get(id) match {
